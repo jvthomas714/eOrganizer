@@ -1,0 +1,27 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+
+var db = require('../../config/sequelize');
+
+//find attendee by id
+exports.attendee = function(req, res, next, id) {
+    db.Attendee.find({where : { id: id }}).then(function(attendee){
+      if (!attendee) {
+          return next(new Error('Failed to load Attendee ' + id));
+      }
+      req.attendee = attendee;
+      next();
+    }).catch(function(err){
+      next(err);
+    });
+};
+
+//add attendee to the db
+exports.add = function(req, res, next, id){
+	req.body.ArticleId = req.article.id
+	re.body.UserId = req.attendee.id
+
+}

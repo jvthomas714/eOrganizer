@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			associate: function(models){
 				Article.belongsTo(models.User);
+				Article.hasMany(models.Attendee);
 			}
 		}
 	);
